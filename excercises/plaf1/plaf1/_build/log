@@ -1,0 +1,6 @@
+# dune init project plaf1
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Shared cache location: /home/bc/.cache/dune/db
+# Workspace root: /mnt/c/496*/excercises/plaf1/plaf1
+# Auto-detected concurrency: 4
