@@ -1,0 +1,6 @@
+# dune utop
+# OCAMLPARAM: unset
+# Workspace root: /mnt/c/Users/bc/496*
+$ /usr/bin/nproc > /tmp/dune12dd28.output 2> /dev/null
+# Auto-detected concurrency: 4
+# disable binary cache

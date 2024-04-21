@@ -1,0 +1,42 @@
+(* Add exercise 3 *)
+
+(* Create a left node with data 12 and no children *)
+let n_left = { data <= 12; left <= 0; right <= 0}    	(* 0 in left/right signals null pointer *)
+
+(* Create a right node with data 44 and no children *)
+in let n_right = { data <= 44; left <= 0; right <= 0}  
+
+(* Create a root node with data 33, left child n_left, and right child n_right *)
+in let n_root = { data <= 33; left <= n_left ; right <= n_right }
+
+(* Create a binary tree t1 with root n_root and size 3 *)
+in let t1 = { root <= n_root ; size <= 3}
+
+(* Define a recursive helper function to add a number to the binary tree *)
+in letrec helper(t) = proc(num) {
+  if num<<t.data
+  then begin
+    (* If the number is less than the node's data and the right child is null, add a new node here *)
+    if number?(t.right)
+    then t.right <= {data <= num; left <= 0; right <= 0}
+    else ((add_bt_helper t.right) num) (* Recurse on the right child *)
+  end else if t.data<<num
+  then begin
+    (* If the number is greater than the node's data and the left child is null, add a new node here *)
+    if number?(t.left)
+    then t.left <= {data <= num; left <= 0; right <= 0}
+    else ((helper t.left) num) (* Recurse on the left child *)
+  end else 0 (* Do nothing if the number is equal to the node's data *)
+}
+
+(* Define a procedure to add a value to the binary tree by calling the helper on the root *)
+in let add_bt = proc(t) {proc(v) {
+  ((helper t.root) v)
+}}
+
+(* Main execution block: add the value 23 to the binary tree, increment the size, and debug print the tree *)
+in begin
+     ((add_bt t1) 23);
+     t1.size <= t1.size+1;
+     debug(t1)		
+   end

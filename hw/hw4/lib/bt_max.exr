@@ -1,0 +1,19 @@
+
+(* Max exercise *)
+
+let n_left = { data <= 12; left <= 0; right <= 0}    (* 0 in head signals null *)
+in let n_right = { data <= 44; left <= 0; right <= 0}
+in let n_root = { data <= 33; left <= n_left ; right <= n_right }
+in let t1 = { root <= n_root ; size <= 3} 
+in letrec max_bt_helper(t1) = proc(n) {
+        if number?(t1)
+        then n
+        else begin
+                let new_n = if t1.data >> n then t1.data else n in
+                let left = ((max_bt_helper t1.left) new_n) in
+                let right = ((max_bt_helper t1.right) new_n) in
+                if left >> right then left else right
+        end
+}
+in let max_bt = proc(t){((max_bt_helper t.root) t.root.data)}
+in (max_bt t1)
