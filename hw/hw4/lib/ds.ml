@@ -30,6 +30,15 @@ let return (v:'a) : 'a ea_result =
 let error (s:string) : 'a ea_result =
   fun _env ->
   Error s
+let rec is_instance_of : string -> string -> class_env -> bool =
+  fun obj_class_name class_id env ->
+  if obj_class_name = class_id then true
+  else
+    match List.assoc_opt obj_class_name env with
+    | Some (super_name, _fields, _methods) ->
+      if super_name = "" then false
+      else is_instance_of super_name class_id env
+    | None -> false  (* This case handles if there's no class found which should technically not happen *)
 
 let (>>=) (c:'a ea_result) (f: 'a -> 'b ea_result) : 'b ea_result =
   fun env ->
@@ -84,6 +93,7 @@ let rec apply_env : string -> exp_val ea_result =
     if id=v
     then Ok (ProcVal (par,body,env))
     else apply_env id tail                                              
+
 
 let lookup_env : env ea_result =
   fun env ->

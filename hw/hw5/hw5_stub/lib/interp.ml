@@ -2,7 +2,8 @@ open Ds
 open ReM
 open Parser_plaf.Ast
 open Parser_plaf.Parser
-       
+(* Bhagawat Chapagain *)
+(* I pledge my honor that I have abided by the Stevens Honor System *)       
 let g_store = Store.empty_store 20 (NumVal 0)
 
 let rec eval_expr : expr -> exp_val ea_result = fun e ->
@@ -116,7 +117,7 @@ let rec eval_expr : expr -> exp_val ea_result = fun e ->
     in
     if has_dupl ids
     then error "Record: duplicate fields"
-    else 
+    else
     sequence (List.map eval_expr es) >>= fun evs ->
     return (RecordVal(List.combine ids evs))
   | Proj(e,id) ->
