@@ -113,6 +113,11 @@ let tree_of_treeVal =  function
   | TreeVal t -> return t
   | _ -> error "Expected a tree!"
 
+  (* 
+let htbl_of_htblVal = function
+| htblVal h -> return h
+| _ -> error "expected a dict!" *)
+
 let tuple_of_tupleVal : exp_val -> (exp_val list) ea_result = function
   | TupleVal(evs) -> return evs
   | _ -> error "Expected a tuple!"

@@ -1,0 +1,26 @@
+# dune ut
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Shared cache location: /home/bc/.cache/dune/db
+# Workspace root: /mnt/c/Users/bc/496*/hw/hw5/hw5_stub
+# Auto-detected concurrency: 4
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; instrument_with = []
+#  }
+$ /usr/bin/ocamlc.opt -config > /tmp/dune_78766b_output
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/checker.ml) > _build/default/lib/.checked.objs/checked__Checker.impl.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/interp.ml) > _build/default/lib/.checked.objs/checked__Interp.impl.d
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I lib/.checked.objs/byte -I /home/bc/.opam/default/lib/menhirLib -I /home/bc/.opam/default/lib/parser_plaf -no-alias-deps -opaque -open Checked -o lib/.checked.objs/byte/checked__Checker.cmo -c -impl lib/checker.ml)
+> File "lib/checker.ml", line 95, characters 5-9:
+> 95 |     |Push(e1,e2) -> 
+>           ^^^^
+> Error: This variant pattern is expected to have type expr
+>        There is no constructor Push within type expr
+[2]
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I lib/.checked.objs/byte -I /home/bc/.opam/default/lib/menhirLib -I /home/bc/.opam/default/lib/parser_plaf -no-alias-deps -opaque -open Checked -o lib/.checked.objs/byte/checked__Interp.cmo -c -impl lib/interp.ml)

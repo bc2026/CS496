@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 (* Example 4 *)
 
 (* counterc *)
@@ -49,3 +50,54 @@ send o restore ();
 send o add (2 ,3) ;
 send o read ()
 end
+=======
+class counterc extends object{
+    field c
+    method initialize() {set c=7}
+    method add(i) {set c=c+i}
+    method bump() {send self add(1)}
+    method read() {c}
+
+}
+
+class resetc extends counterc {
+    field v
+    method reset() {set c=v}
+    method setReset(i) {set v=i}
+}
+
+class bkpcc extends resetc{
+    field b
+    method initialize() {
+        begin
+        super initialize();
+        set b=12
+        end
+    }
+
+    method add(i) {
+        begin
+        send self backup();
+        super add(i)
+        end
+    }
+
+    method add(i,j) {
+        begin
+        send self backup();
+        super add(i);
+        super add(j)
+        end
+    }
+
+    method backup() {set b=c}
+    method restore() {set c=b}
+}
+
+let o = new bkpcc()
+in begin
+send o restore();
+send o add(2,3);
+send o read()
+end
+>>>>>>> Stashed changes

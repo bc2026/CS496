@@ -1,8 +1,3 @@
-(*
-Rohan Kallur, Daniel Kim
-I pledge my honor that I have abided by the Stevens Honor System.   
-*)
-
 open ReM
 open Dst
 open Parser_plaf.Ast
@@ -94,6 +89,30 @@ declaration")
       else error "setref: Incompatible types"
     |t -> error "setref: Expected a reference type")
 
+  (* stacks*)
+    |EmptyStack(None) -> error "must have a type"
+    |EmptyStack(t) -> return @@ StackType(t)
+    |Push(e1,e2) -> 
+      chk_expr e1 >>= fun t1 ->
+      chk_expr e2 >>= fun t2 ->
+      (match t2 with 
+      | StackType(t) -> if t=t1 then return t2 else error "error"
+      | _-> error "error")
+    |Pop(e) ->
+      chk_expr e >>= fun te ->
+        (match te with 
+        | StackType(t) -> t
+        | _ -> error "error")
+    |Peek(e) ->
+      chk_expr e >>= fun te ->
+        (match te with
+        |StackType(t) -> return t
+        |_ -> error "error")
+    |IsEmpty(e) ->
+      chk_expr e >>= fun te ->
+        (match te with
+        | StackType(_) -> return @@ BoolType
+        |_ -> error "error")
   (* list *)
   | EmptyList(None) ->
     error "missing type annotation"

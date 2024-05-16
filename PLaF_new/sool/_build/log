@@ -2,7 +2,11 @@
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Shared cache location: /home/bc/.cache/dune/db
+<<<<<<< Updated upstream
 # Workspace root: /mnt/c/Users/bc/496*/PLaF_new/PLaF/src/sool
+=======
+# Workspace root: /mnt/c/Users/bc/496*/PLaF_new/sool
+>>>>>>> Stashed changes
 # Auto-detected concurrency: 4
 # Dune context:
 #  { name = "default"
@@ -13,6 +17,7 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
+<<<<<<< Updated upstream
 $ /usr/bin/ocamlc.opt -config > /tmp/dune_d3852b_output
 $ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/interp.ml) > _build/default/lib/.sool.objs/sool__Interp.impl.d
 $ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I lib/.sool.objs/byte -I /home/bc/.opam/default/lib/menhirLib -I /home/bc/.opam/default/lib/parser_plaf -no-alias-deps -opaque -open Sool -o lib/.sool.objs/byte/sool__Interp.cmo -c -impl lib/interp.ml)
@@ -20,3 +25,6 @@ $ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..
 > 285 |       fun obj -> return @@ BoolVal (is_subclass class_id class_id) 
 >                 ^^^
 > Warning 27 [unused-var-strict]: unused variable obj.
+=======
+$ /usr/bin/ocamlc.opt -config > /tmp/dune_f45347_output
+>>>>>>> Stashed changes
